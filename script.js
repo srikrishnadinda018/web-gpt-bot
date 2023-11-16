@@ -94,16 +94,16 @@ const handleOutgoingChat = () => {
     const html = `<div class="chat-content">
                      
                     <div class="chat-details">
-                         <button id="translation-btn" class="button-style">TRANSLATE</button>
+                         
                         <img src="static folder/user.jpg" alt="user-img">
                         <p>${userText}</p>
                     </div>
-                    
+                    <button id="search-btn" class="button-style">SEARCH</button>
                 </div>`;
 
     // Create an outgoing chat div with user's message and append it to chat container
     const outgoingChatDiv = createChatElement(html, "outgoing");
-    chatContainer.querySelector(".default-text")?.remove();
+    
     chatContainer.appendChild(outgoingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
     setTimeout(showTypingAnimation, 500);
