@@ -92,7 +92,9 @@ const handleOutgoingChat = () => {
     chatInput.style.height = `${initialInputHeight}px`;
 
     const html = `<div class="chat-content">
+                     
                     <div class="chat-details">
+                         <button id="translation-btn" class="button-style">TRANSLATE</button>
                         <img src="static folder/user.jpg" alt="user-img">
                         <p>${userText}</p>
                     </div>
