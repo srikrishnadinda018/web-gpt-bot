@@ -102,7 +102,7 @@ const handleOutgoingChat = () => {
 deleteButton.addEventListener("click", () => {
     
     if(confirm("Are you sure you want to delete all the chats?")) {
-        window.location.reload()
+        window.location.reload();
     }
 });
 
