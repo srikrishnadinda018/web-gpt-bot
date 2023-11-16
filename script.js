@@ -118,8 +118,8 @@ deleteButton.addEventListener("click", () => {
 
 search.addEventListener("click", () => {
     
-    const  url = "https://www.google.com/search?q=" + userText;
-      window.open(url, "_blank");
+    const  pageUrl = "https://www.google.com/search?q=" + userText;
+      window.open(pageUrl, "_blank");
 });
 
 translation.addEventListener("click", () => {
