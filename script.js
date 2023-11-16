@@ -96,7 +96,7 @@ const handleOutgoingChat = () => {
                         <img src="static folder/user.jpg" alt="user-img">
                         <p>${userText}</p>
                     </div>
-                    <button id="search-btn" class="button-style">SEARCH</button>
+                    
                 </div>`;
 
     // Create an outgoing chat div with user's message and append it to chat container
