@@ -3,7 +3,7 @@ const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 const search = document.querySelector("#search-btn");
-const translation = document.querySelector("#translation-btn");
+
 
 let userText = null;
 const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
@@ -69,7 +69,7 @@ const showTypingAnimation = () => {
                             <div class="typing-dot" style="--delay: 0.4s"></div>
                         </div>
                     </div>
-                   <button id="translation-btn" class="button-style">TRANSLATE</button> 
+                   
                 </div>`;
     // Create an incoming chat div with typing animation and append it to chat container
     const incomingChatDiv = createChatElement(html, "incoming");
@@ -109,10 +109,9 @@ deleteButton.addEventListener("click", () => {
     }
 });
 
-translation.addEventListener("click", () => {
-    
-    const  translatedUrl = "https://translate.google.com/#view=home&op=translate&sl=en&tl=bn&text=" + encodeURIComponent(pElement.textContent);
-        window.open(translatedUrl, "_blank");
+search.addEventListener("click", () => {
+  const googleURL = `https://www.google.com/search?q=${userText}`;
+      window.open(googleURL, '_blank');
 });
 
 const initialInputHeight = chatInput.scrollHeight;
