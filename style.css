@@ -233,11 +233,6 @@ span.material-symbols-rounded {
 
   .button-style{
     
-    background-image: url("static folder/download(2).jpg");
-    background-size: 30px 50px;
-  height: 30px;
-  width: 50px;
-  border: none;
-  cursor: pointer;
+    
   }
 
