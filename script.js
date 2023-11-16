@@ -116,7 +116,17 @@ deleteButton.addEventListener("click", () => {
     }
 });
 
+search.addEventListener("click", () => {
+    
+    const  url = "https://www.google.com/search?q=" + userText;
+      window.open(url, "_blank");
+});
 
+translation.addEventListener("click", () => {
+    
+    const  translatedUrl = "https://translate.google.com/#view=home&op=translate&sl=en&tl=bn&text=" + encodeURIComponent(pElement.textContent);
+        window.open(translatedUrl, "_blank");
+});
 
 const initialInputHeight = chatInput.scrollHeight;
 
