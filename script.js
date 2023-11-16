@@ -2,6 +2,8 @@ const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
+const search = document.querySelector("#search-btn");
+const translation = document.querySelector("#translation-btn");
 
 let userText = null;
 const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
@@ -49,7 +51,8 @@ const getChatResponse = async (incomingChatDiv) => {
     // Remove the typing animation, append the paragraph element and save the chats to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
-    
+    const utterance = new SpeechSynthesisUtterance(pElement.textContent);
+    speechSynthesis.speak(utterance);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
 
@@ -66,7 +69,7 @@ const showTypingAnimation = () => {
                             <div class="typing-dot" style="--delay: 0.4s"></div>
                         </div>
                     </div>
-                    
+                   <button id="translation-btn" class="button-style">TRANSLATE</button> 
                 </div>`;
     // Create an incoming chat div with typing animation and append it to chat container
     const incomingChatDiv = createChatElement(html, "incoming");
@@ -88,6 +91,7 @@ const handleOutgoingChat = () => {
                         <img src="static folder/user.jpg" alt="user-img">
                         <p>${userText}</p>
                     </div>
+                    <button id="search-btn" class="button-style">SEARCH</button>
                 </div>`;
 
     // Create an outgoing chat div with user's message and append it to chat container
@@ -99,9 +103,9 @@ const handleOutgoingChat = () => {
 }
 
 deleteButton.addEventListener("click", () => {
-    // Remove the chats from local storage and call loadDataFromLocalstorage function
+    
     if(confirm("Are you sure you want to delete all the chats?")) {
-        
+        window.location.reload();
     }
 });
 
