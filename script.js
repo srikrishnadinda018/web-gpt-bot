@@ -125,5 +125,4 @@ chatInput.addEventListener("input", () => {
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
-
-sendButton.addEventListener("click", handleOutgoingChat); 
+sendButton.addEventListener("click", handleOutgoingChat);
