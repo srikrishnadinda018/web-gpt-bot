@@ -54,6 +54,9 @@ const getChatResponse = async (incomingChatDiv) => {
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
     
+   const utterance = new SpeechSynthesisUtterance(pElement.textContent);
+   speechSynthesis.speak(utterance);
+
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
 
