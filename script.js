@@ -116,11 +116,7 @@ deleteButton.addEventListener("click", () => {
     }
 });
 
-search.addEventListener("click", () => {
-    
-    const  pageUrl = "https://www.google.com/search?q=" + userText;
-      window.open(pageUrl, "_blank");
-});
+
 
 translation.addEventListener("click", () => {
     
