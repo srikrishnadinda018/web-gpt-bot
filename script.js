@@ -2,7 +2,7 @@ const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
-const search = document.querySelector("#search-btn);
+const search = document.querySelector("#search-btn");
 const translation = document.querySelector("#translation-btn");
 
 
