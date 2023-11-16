@@ -109,6 +109,13 @@ deleteButton.addEventListener("click", () => {
     }
 });
 
+search.addEventListener("click", () => {
+
+    const googleURL = `https://www.google.com/search?q=${userText}`;
+      window.open(googleURL, '_blank');
+});
+
+
 
 
 const initialInputHeight = chatInput.scrollHeight;
