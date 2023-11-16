@@ -67,7 +67,7 @@ const showTypingAnimation = () => {
                             <div class="typing-dot" style="--delay: 0.4s"></div>
                         </div>
                     </div>
-                    <span onclick="copyResponse(this)" class="material-symbols-rounded">content_copy</span>
+                    <button>search</button>
                 </div>`;
     // Create an incoming chat div with typing animation and append it to chat container
     const incomingChatDiv = createChatElement(html, "incoming");
@@ -102,7 +102,7 @@ const handleOutgoingChat = () => {
 deleteButton.addEventListener("click", () => {
     
     if(confirm("Are you sure you want to delete all the chats?")) {
-        
+        window.location.reload()
     }
 });
 
