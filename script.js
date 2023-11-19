@@ -19,7 +19,7 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv,{userText}) => {
+const searchWikipedia = async (incomingChatDiv) => {
     const pElement = document.createElement("p");
 
     try {
@@ -28,7 +28,10 @@ const searchWikipedia = async (incomingChatDiv,{userText}) => {
 
         if (data.query && data.query.search) {
             data.query.search.forEach(result => {
-                pElement.innerHTML += "<p>${result.snippet}</p>";
+                // Creating a new paragraph for each result
+                const resultParagraph = document.createElement("p");
+                resultParagraph.textContent = result.snippet;
+                pElement.appendChild(resultParagraph);
             });
         } else {
             pElement.textContent = "No results found.";
@@ -37,6 +40,10 @@ const searchWikipedia = async (incomingChatDiv,{userText}) => {
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
+
+    // Append the pElement to the specified incomingChatDiv
+  //  incomingChatDiv.appendChild(pElement);
+//};
 
    // incomingChatDiv.appendChild(pElement);
 //};
@@ -81,7 +88,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    searchWikipedia(document.getElementByclass(incomingChatDiv),{userText});
+    searchWikipedia(incomingChatDiv);
 }
 
 const handleOutgoingChat = () => {
