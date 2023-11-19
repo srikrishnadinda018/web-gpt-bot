@@ -233,17 +233,21 @@ span.material-symbols-rounded {
 #search-btn {
   margin-left: 5px;
   padding: 3px;
+  border-radius: 13px;
 }
 #translation-btn {
   margin-left: 5px;
   padding: 3px;
+  border-radius: 3px;
 }
 #search-btn:hover{
   background-color: blue;
   font-color: white;
+  cursor: pointer;
 }
   #translation-btn:hover{
   background-color: blue;
   font-color: white;
+  cursor: pointer;
   }
 
