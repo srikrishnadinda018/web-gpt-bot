@@ -23,9 +23,6 @@ const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/completions";
     const pElement = document.createElement("p");
 
-    // Ensure userText is defined
-    
-
     // Define the properties and data for the API request
     const requestOptions = {
         method: "POST",
@@ -43,23 +40,14 @@ const getChatResponse = async (incomingChatDiv) => {
         })
     }
 
-    // Send POST request to API, get response and set the response as paragraph element text
+    // Send POST request to API, get response and set the reponse as paragraph element text
     try {
         const response = await (await fetch(API_URL, requestOptions)).json();
-
-        // Check if choices array is not empty
-        if (response.choices && response.choices.length > 0) {
-            pElement.textContent = response.choices[0].text.trim();
-        } else {
-            throw new Error("Empty or invalid response from the API");
-        }
-    } catch (error) {
-        // Add error class to the paragraph element and set error text
+        pElement.textContent = response.choices[0].text.trim();
+    } catch (error) { // Add error class to the paragraph element and set error text
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
-    }
-
-
+        }
     // Remove the typing animation, append the paragraph element and save the chats to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
