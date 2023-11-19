@@ -19,7 +19,7 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv, searchInput) => {
+const searchWikipedia = async (incomingChatDiv, userText) => {
     const pElement = document.createElement("p");
 
     try {
@@ -28,24 +28,25 @@ const searchWikipedia = async (incomingChatDiv, searchInput) => {
 
         if (data.query && data.query.search) {
             data.query.search.forEach(result => {
-                pElement.innerHTML += `<p>${result.snippet}</p>`;
+                const resultSnippet = document.createElement('p');
+                resultSnippet.textContent = result.snippet;
+                pElement.appendChild(resultSnippet);
             });
         } else {
             pElement.textContent = "No results found.";
         }
     } catch (error) {
-        // Add error class to the paragraph element and set error text
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
 
-    // Append the paragraph element to the incomingChatDiv or any other desired container
     //incomingChatDiv.appendChild(pElement);
 //};
 
 // Example usage:
 // Replace 'yourSearchInput' with the actual input and 'yourContainerDiv' with the actual container div
 //searchWikipedia(document.getElementById('yourContainerDiv'), 'yourSearchInput');
+
 
 
      
