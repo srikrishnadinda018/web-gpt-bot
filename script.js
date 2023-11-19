@@ -3,6 +3,7 @@ const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 const search = document.querySelector("#search-btn");
+const translation = document.querySelector("#translation-btn");
 
 
 let userText = null;
@@ -115,7 +116,11 @@ search.addEventListener("click", () => {
       window.open(googleURL, '_blank');
 });
 
+translation.addEventListener("click", () => {
 
+    const googleTranslateUrl = `https://translate.google.com/?sl=en&tl=bn&text=${encodeURIComponent(pElement.textContent)}`;
+    window.open(googleTranslateUrl, '_blank');
+});
 
 
 const initialInputHeight = chatInput.scrollHeight;
