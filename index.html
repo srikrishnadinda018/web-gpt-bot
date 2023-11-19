@@ -19,6 +19,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            padding: 20px;
         }
 
         button {
@@ -35,16 +36,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s ease;
         }
 
-        button a {
-            text-decoration: none;
-            color: inherit;
-        }
-        button:hover{
-            background-color: green;
-            font-color: white;
-            cursor: pointer;
+        button:hover {
+            background-color: #00a74a; /* Adjusted hover color */
         }
 
         img {
@@ -58,11 +54,14 @@
             font-size: 18px;
             line-height: 1.5;
         }
-       .typing-text {
-            overflow: hidden; /* Hide overflow to create typing effect */
-            white-space: nowrap; /* Prevent line breaks */
-            border-right: 2px solid #fff; /* Create a blinking cursor effect */
+
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #fff;
+            font-size: 18px; /* Adjusted font size */
             animation: typing 2s steps(40);
+            margin-top: 20px; /* Added margin top */
         }
 
         @keyframes typing {
@@ -73,9 +72,9 @@
 </head>
 <body>
     <div class="container">
-        <img src="static folder/aui.jpg" alt="images">    
+        <img src="static folder/aui.jpg" alt="images">
         <p class="typing-text">The marvel of our time - AI technology. From self-driving cars to medical feats, AI's impact is boundless. Let's celebrate its might and use it wisely for a brighter future where dreams arise.</p>
-        <p class="typing-text">"Meet [WEB-GPT-CHATS], a friendly chat bot designed to assist you with information and engage in interesting conversations."</p>
+        <p class="typing-text">Meet [WEB-GPT-CHATS], a friendly chat bot designed to assist you with information and engage in interesting conversations.</p>
         <p>SO, TELL ME! HOW CAN I HELP YOU TODAY ???</p>
         <button><a href="main.html"><span>Start</span></a></button>
     </div>
