@@ -230,4 +230,11 @@ span.material-symbols-rounded {
   span.material-symbols-rounded {
     font-size: 1.25rem!important;
   }
+#search-btn {
+  margin-left: 5px;
 
+}
+#translation-btn {
+  margin-left: 5px;
+
+}
