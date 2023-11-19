@@ -52,8 +52,16 @@ const getChatResponse = async (incomingChatDiv) => {
     // Remove the typing animation, append the paragraph element and save the chats to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
+    
     const utterance = new SpeechSynthesisUtterance(pElement.textContent);
     speechSynthesis.speak(utterance);
+
+    translation.addEventListener("click", () => {
+
+    const googleTranslateUrl = `https://translate.google.com/?sl=en&tl=bn&text=${encodeURIComponent(pElement.textContent)}`;
+    window.open(googleTranslateUrl, '_blank');
+});
+
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
 
@@ -116,11 +124,6 @@ search.addEventListener("click", () => {
       window.open(googleURL, '_blank');
 });
 
-translation.addEventListener("click", () => {
-
-    const googleTranslateUrl = `https://translate.google.com/?sl=en&tl=bn&text=${encodeURIComponent(pElement.textContent)}`;
-    window.open(googleTranslateUrl, '_blank');
-});
 
 
 const initialInputHeight = chatInput.scrollHeight;
