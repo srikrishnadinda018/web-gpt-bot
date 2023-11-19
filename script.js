@@ -7,7 +7,7 @@ const translation = document.querySelector("#translation-btn");
 
 
 let userText = null;
-const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 
 
 
