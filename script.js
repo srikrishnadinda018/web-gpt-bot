@@ -26,14 +26,19 @@ const searchWikipedia = async (incomingChatDiv) => {
         const response = await fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${userText}");
         const data = await response.json();
 
-        data.query.search.forEach(result => {
-            pElement.textContent += result.snippet + ' ';
-        });
+        if (data.query && data.query.search) {
+            data.query.search.forEach(result => {
+                pElement.textContent += result.snippet + ' ';
+            });
+        } else {
+            pElement.textContent = "No results found.";
+        }
     } catch (error) {
         // Add error class to the paragraph element and set error text
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
+
      
     // Remove the typing animation, append the paragraph element and save the chats to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
@@ -69,7 +74,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    getChatResponse(incomingChatDiv);
+    searchWikipedia(incomingChatDiv);
 }
 
 const handleOutgoingChat = () => {
