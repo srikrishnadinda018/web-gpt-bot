@@ -19,7 +19,7 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv) => {
+const searchWikipedia = async (incomingChatDiv,userText) => {
     const pElement = document.createElement("p");
 
     try {
@@ -74,7 +74,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    searchWikipedia(incomingChatDiv);
+    searchWikipedia(incomingChatDiv,userText);
 }
 
 const handleOutgoingChat = () => {
