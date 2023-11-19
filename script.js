@@ -19,18 +19,16 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv, userText) => {
+const searchWikipedia = async (incomingChatDiv,{userText}) => {
     const pElement = document.createElement("p");
 
     try {
-        const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${searchInput}`);
+        const response = await fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${userText}");
         const data = await response.json();
 
         if (data.query && data.query.search) {
             data.query.search.forEach(result => {
-                const resultSnippet = document.createElement('p');
-                resultSnippet.textContent = result.snippet;
-                pElement.appendChild(resultSnippet);
+                pElement.innerHTML += "<p>${result.snippet}</p>";
             });
         } else {
             pElement.textContent = "No results found.";
@@ -40,13 +38,12 @@ const searchWikipedia = async (incomingChatDiv, userText) => {
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
 
-    //incomingChatDiv.appendChild(pElement);
-//};
+    incomingChatDiv.appendChild(pElement);
+};
 
 // Example usage:
 // Replace 'yourSearchInput' with the actual input and 'yourContainerDiv' with the actual container div
-//searchWikipedia(document.getElementById('yourContainerDiv'), 'yourSearchInput');
-
+searchWikipedia(('yourContainerDiv'), 'yourSearchInput');
 
 
      
@@ -84,7 +81,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    searchWikipedia(incomingChatDiv,userText);
+    searchWikipedia(document.getElementByclass(incomingChatDiv),{userText});
 }
 
 const handleOutgoingChat = () => {
