@@ -23,8 +23,8 @@ const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/completions";
     const pElement = document.createElement("p");
 
-    // Assume userText is defined before making the API request
-    const userText = incomingChatDiv.textContent;
+    // Ensure userText is defined
+    
 
     // Define the properties and data for the API request
     const requestOptions = {
@@ -68,7 +68,6 @@ const getChatResponse = async (incomingChatDiv) => {
     speechSynthesis.speak(utterance);
 
     translation.addEventListener("click", () => {
-
     const googleTranslateUrl = `https://translate.google.com/?sl=en&tl=bn&text=${encodeURIComponent(pElement.textContent)}`;
     window.open(googleTranslateUrl, '_blank');
 });
