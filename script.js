@@ -38,12 +38,12 @@ const searchWikipedia = async (incomingChatDiv,{userText}) => {
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
 
-    incomingChatDiv.appendChild(pElement);
-};
+   // incomingChatDiv.appendChild(pElement);
+//};
 
 // Example usage:
 // Replace 'yourSearchInput' with the actual input and 'yourContainerDiv' with the actual container div
-searchWikipedia(('yourContainerDiv'), 'yourSearchInput');
+//searchWikipedia(('yourContainerDiv'), 'yourSearchInput');
 
 
      
