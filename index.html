@@ -58,13 +58,24 @@
             font-size: 18px;
             line-height: 1.5;
         }
+       .typing-text {
+            overflow: hidden; /* Hide overflow to create typing effect */
+            white-space: nowrap; /* Prevent line breaks */
+            border-right: 2px solid #fff; /* Create a blinking cursor effect */
+            animation: typing 2s steps(40);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="static folder/aui.jpg" alt="images">    
-        <p>The marvel of our time - AI technology. From self-driving cars to medical feats, AI's impact is boundless. Let's celebrate its might and use it wisely for a brighter future where dreams arise.</p>
-        <p>"Meet [WEB-GPT-CHATS], a friendly chat bot designed to assist you with information and engage in interesting conversations."</p>
+        <p class="typing-text">The marvel of our time - AI technology. From self-driving cars to medical feats, AI's impact is boundless. Let's celebrate its might and use it wisely for a brighter future where dreams arise.</p>
+        <p class="typing-text">"Meet [WEB-GPT-CHATS], a friendly chat bot designed to assist you with information and engage in interesting conversations."</p>
         <p>SO, TELL ME! HOW CAN I HELP YOU TODAY ???</p>
         <button><a href="main.html"><span>Start</span></a></button>
     </div>
