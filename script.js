@@ -19,16 +19,16 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv,userText) => {
+const searchWikipedia = async (incomingChatDiv, searchInput) => {
     const pElement = document.createElement("p");
 
     try {
-        const response = await fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${userText}");
+        const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${searchInput}`);
         const data = await response.json();
 
         if (data.query && data.query.search) {
             data.query.search.forEach(result => {
-                pElement.textContent += result.snippet + ' ';
+                pElement.innerHTML += `<p>${result.snippet}</p>`;
             });
         } else {
             pElement.textContent = "No results found.";
@@ -38,6 +38,15 @@ const searchWikipedia = async (incomingChatDiv,userText) => {
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
     }
+
+    // Append the paragraph element to the incomingChatDiv or any other desired container
+    //incomingChatDiv.appendChild(pElement);
+//};
+
+// Example usage:
+// Replace 'yourSearchInput' with the actual input and 'yourContainerDiv' with the actual container div
+//searchWikipedia(document.getElementById('yourContainerDiv'), 'yourSearchInput');
+
 
      
     // Remove the typing animation, append the paragraph element and save the chats to local storage
