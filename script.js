@@ -8,6 +8,24 @@ const translation = document.querySelector("#translation-btn");
 
 let userText = null;
 
+async function getWikipediaData(query) {
+  const apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro&titles=${query}&origin=*";
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const pageId = Object.keys(data.query.pages)[0];
+
+    if (pageId === '-1') {
+      throw new Error('No information found for the given query.');
+    }
+
+    return data.query.pages[pageId].extract;
+  } catch (error) {
+    throw new Error('Failed to fetch Wikipedia data.');
+  }
+}
 
 
 
@@ -19,41 +37,26 @@ const createChatElement = (content, className) => {
     return chatDiv; // Return the created chat div
 }
 
-const searchWikipedia = async (incomingChatDiv) => {
-    const pElement = document.createElement("p");
 
-    try {
-        const response = await fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${userText}");
-        const data = await response.json();
+async function sendMessage() {
+ 
 
-        if (data.query && data.query.search) {
-            data.query.search.forEach(result => {
-                // Creating a new paragraph for each result
-                const resultParagraph = document.createElement("p");
-                resultParagraph.textContent = result.snippet;
-                pElement.appendChild(resultParagraph);
-            });
-        } else {
-            pElement.textContent = "No results found.";
-        }
-    } catch (error) {
-        pElement.classList.add("error");
-        pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
-    }
+  try {
+    // Call Wikipedia API
+    const response = await getWikipediaData({userText});
 
-    // Append the pElement to the specified incomingChatDiv
-  //  incomingChatDiv.appendChild(pElement);
-//};
+    // Display Wikipedia results
+    pElement.innerHTML += "<div>Wikipedia: ${response}</div>";
+  } catch (error) {
+    console.error(error);
+    chatOutput.innerHTML += "<div>Error fetching Wikipedia data.</div>";
+  }
 
-   // incomingChatDiv.appendChild(pElement);
-//};
-
-// Example usage:
-// Replace 'yourSearchInput' with the actual input and 'yourContainerDiv' with the actual container div
-//searchWikipedia(('yourContainerDiv'), 'yourSearchInput');
+  
 
 
-     
+
+
     // Remove the typing animation, append the paragraph element and save the chats to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
@@ -88,7 +91,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    searchWikipedia(incomingChatDiv);
+    getChatResponse(incomingChatDiv);
 }
 
 const handleOutgoingChat = () => {
@@ -142,4 +145,3 @@ chatInput.addEventListener("input", () => {
 
 
 sendButton.addEventListener("click", handleOutgoingChat);
-
