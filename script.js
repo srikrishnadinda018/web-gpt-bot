@@ -38,8 +38,8 @@ const createChatElement = (content, className) => {
 }
 
 
-async function sendMessage() {
- 
+async function sendMessage(incomingChatDiv) {
+ const pElement = document.createElement("p");
 
   try {
     // Call Wikipedia API
@@ -48,8 +48,9 @@ async function sendMessage() {
     // Display Wikipedia results
     pElement.innerHTML += "<div>Wikipedia: ${response}</div>";
   } catch (error) {
-    console.error(error);
-    chatOutput.innerHTML += "<div>Error fetching Wikipedia data.</div>";
+    catch (error) { // Add error class to the paragraph element and set error text
+        pElement.classList.add("error");
+        pElement.innerHTML += "<div>Oops! Something went wrong while retrieving the response. Please try again.</div>";
   }
 
   
